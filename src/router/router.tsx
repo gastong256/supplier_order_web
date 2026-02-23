@@ -1,6 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { ProtectedRoute } from './ProtectedRoute'
+import { Layout } from '@/components/layout/Layout'
 import { LoginPage } from '@/features/auth/pages/LoginPage'
+import { SuppliersPage } from '@/features/suppliers/pages/SuppliersPage'
+import { ProductsPage } from '@/features/products/pages/ProductsPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 
 const router = createBrowserRouter([
@@ -15,13 +18,26 @@ const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        path: '/',
-        element: (
-          <div className="p-8 text-foreground">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-            <p className="mt-2 text-muted-foreground">Welcome! You are authenticated.</p>
-          </div>
-        ),
+        element: <Layout />,
+        children: [
+          {
+            path: '/',
+            element: (
+              <div className="p-6">
+                <h1 className="text-xl font-semibold text-foreground">Dashboard</h1>
+                <p className="mt-1 text-sm text-muted-foreground">Welcome! You are authenticated.</p>
+              </div>
+            ),
+          },
+          {
+            path: '/suppliers',
+            element: <SuppliersPage />,
+          },
+          {
+            path: '/products',
+            element: <ProductsPage />,
+          },
+        ],
       },
     ],
   },

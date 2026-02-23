@@ -1,0 +1,52 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Button, Input } from '@/components/ui'
+import { supplierSchema, type SupplierFormValues } from '../schemas/supplierSchema'
+import type { Supplier } from '../types/supplier.types'
+
+interface SupplierFormProps {
+  defaultValues?: Supplier
+  onSubmit: (values: SupplierFormValues) => void
+  isPending: boolean
+  onCancel: () => void
+}
+
+export function SupplierForm({ defaultValues, onSubmit, isPending, onCancel }: SupplierFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SupplierFormValues>({
+    resolver: zodResolver(supplierSchema),
+    defaultValues: defaultValues
+      ? {
+          name: defaultValues.name,
+          email: defaultValues.email,
+          phone: defaultValues.phone,
+          address: defaultValues.address,
+        }
+      : { name: '', email: '', phone: '', address: '' },
+  })
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" noValidate>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Input label="Name" error={errors.name?.message} {...register('name')} />
+        <Input label="Email" type="email" error={errors.email?.message} {...register('email')} />
+        <Input label="Phone" error={errors.phone?.message} {...register('phone')} />
+        <div className="sm:col-span-2">
+          <Input label="Address" error={errors.address?.message} {...register('address')} />
+        </div>
+      </div>
+
+      <div className="flex justify-end gap-3 border-t border-border pt-4">
+        <Button type="button" variant="outline" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="submit" isLoading={isPending}>
+          {isPending ? 'Saving...' : 'Save Supplier'}
+        </Button>
+      </div>
+    </form>
+  )
+}

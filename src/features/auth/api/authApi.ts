@@ -8,7 +8,7 @@ export const authApi = {
       '/auth/login',
       credentials
     )
-    return response.data.data
+    return response.data
   },
 
   logout: async (): Promise<void> => {
@@ -20,11 +20,11 @@ export const authApi = {
       '/auth/refresh',
       { refreshToken }
     )
-    return response.data.data
+    return response.data
   },
 
   getMe: async (): Promise<AuthResponse['user']> => {
     const response = await apiClient.get<ApiResponse<AuthResponse['user']>>('/auth/me')
-    return response.data.data
+    return response.data
   },
 }
