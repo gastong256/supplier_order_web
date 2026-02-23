@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# build
+dist
+dist-ssr
+
+# local env files
+.env.local
+.env.*.local
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# testing
+coverage
+
+# TypeScript
+*.tsbuildinfo
