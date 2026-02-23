@@ -3,6 +3,7 @@ import { ProtectedRoute } from './ProtectedRoute'
 import { Layout } from '@/components/layout/Layout'
 import { LoginPage } from '@/features/auth/pages/LoginPage'
 import { SuppliersPage } from '@/features/suppliers/pages/SuppliersPage'
+import { SupplierProductsPage } from '@/features/suppliers/pages/SupplierProductsPage'
 import { ProductsPage } from '@/features/products/pages/ProductsPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
           {
             path: '/suppliers',
             element: <SuppliersPage />,
+          },
+          {
+            path: '/suppliers/:supplierId/products',
+            element: <SupplierProductsPage />,
           },
           {
             path: '/products',

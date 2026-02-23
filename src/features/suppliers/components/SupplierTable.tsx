@@ -4,9 +4,10 @@ import type { Supplier } from '../types/supplier.types'
 interface SupplierTableProps {
   suppliers: Supplier[]
   onEdit: (supplier: Supplier) => void
-  onDelete: (id: number) => void
+  onDelete: (id: string) => void
   isDeleting: boolean
-  deletingId: number | null
+  deletingId: string | null
+  onViewProducts: (supplier: Supplier) => void
 }
 
 export function SupplierTable({
@@ -15,6 +16,7 @@ export function SupplierTable({
   onDelete,
   isDeleting,
   deletingId,
+  onViewProducts,
 }: SupplierTableProps) {
   if (suppliers.length === 0) {
     return (
@@ -45,6 +47,13 @@ export function SupplierTable({
               <td className="px-4 py-3 text-muted-foreground">{supplier.address}</td>
               <td className="px-4 py-3 text-right">
                 <div className="inline-flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onViewProducts(supplier)}
+                  >
+                    Products
+                  </Button>
                   <Button
                     variant="outline"
                     size="sm"

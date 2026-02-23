@@ -4,6 +4,7 @@ export interface Product {
   description: string
   unit: string
   sku: string
+  stock: number
   created_at: string
   updated_at: string
 }
@@ -13,6 +14,7 @@ export interface CreateProductDto {
   description: string
   unit: string
   sku: string
+  stock: number
 }
 
 export type UpdateProductDto = Partial<CreateProductDto>

@@ -20,7 +20,7 @@ export const suppliersApi = {
   },
 
   update: async (id: number, data: UpdateSupplierDto): Promise<Supplier> => {
-    const response = await apiClient.put<ApiResponse<Supplier>>(`/suppliers/${id}`, data)
+    const response = await apiClient.patch<ApiResponse<Supplier>>(`/suppliers/${id}`, data)
     return response.data
   },
 

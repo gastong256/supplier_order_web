@@ -32,6 +32,7 @@ export function ProductTable({
             <th className="px-4 py-3 text-left font-medium text-muted-foreground">Name</th>
             <th className="px-4 py-3 text-left font-medium text-muted-foreground">SKU</th>
             <th className="px-4 py-3 text-left font-medium text-muted-foreground">Unit</th>
+            <th className="px-4 py-3 text-left font-medium text-muted-foreground">Stock</th>
             <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
           </tr>
         </thead>
@@ -41,6 +42,7 @@ export function ProductTable({
               <td className="px-4 py-3 font-medium text-foreground">{product.name}</td>
               <td className="px-4 py-3 font-mono text-muted-foreground">{product.sku}</td>
               <td className="px-4 py-3 text-muted-foreground">{product.unit}</td>
+              <td className="px-4 py-3 text-muted-foreground">{product.stock}</td>
               <td className="px-4 py-3 text-right">
                 <div className="inline-flex gap-2">
                   <Button

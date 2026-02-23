@@ -29,8 +29,9 @@ export function ProductForm({
           description: defaultValues.description,
           sku: defaultValues.sku,
           unit: defaultValues.unit,
+          stock: defaultValues.stock,
         }
-      : { name: '', description: '', sku: '', unit: '' },
+      : { name: '', description: '', sku: '', unit: '', stock: 0 },
   })
 
   return (
@@ -39,6 +40,7 @@ export function ProductForm({
         <Input label="Name" error={errors.name?.message} {...register('name')} />
         <Input label="SKU" error={errors.sku?.message} {...register('sku')} />
         <Input label="Unit" error={errors.unit?.message} {...register('unit')} />
+        <Input label="Stock" type="number" error={errors.stock?.message} {...register('stock')} />
         <div className="sm:col-span-2">
           <Input
             label="Description"

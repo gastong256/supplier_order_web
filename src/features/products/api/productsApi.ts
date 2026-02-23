@@ -19,7 +19,7 @@ export const productsApi = {
   },
 
   update: async (id: number, data: UpdateProductDto): Promise<Product> => {
-    const response = await apiClient.put<ApiResponse<Product>>(`/products/${id}`, data)
+    const response = await apiClient.patch<ApiResponse<Product>>(`/products/${id}`, data)
     return response.data
   },
 

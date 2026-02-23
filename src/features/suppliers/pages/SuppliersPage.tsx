@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { Button } from '@/components/ui'
 import { SupplierTable } from '../components/SupplierTable'
 import { SupplierForm } from '../components/SupplierForm'
@@ -12,9 +13,10 @@ import type { Supplier } from '../types/supplier.types'
 import type { SupplierFormValues } from '../schemas/supplierSchema'
 
 export function SuppliersPage() {
+  const navigate = useNavigate()
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState<Supplier | null>(null)
-  const [deletingId, setDeletingId] = useState<number | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   const { data: suppliers = [], isLoading, isError } = useSuppliers()
   const createMutation = useCreateSupplier()
@@ -47,7 +49,11 @@ export function SuppliersPage() {
     }
   }
 
-  function handleDelete(id: number) {
+  function handleViewProducts(supplier: Supplier) {
+    void navigate(`/suppliers/${supplier.id}/products`)
+  }
+
+  function handleDelete(id: string) {
     if (!confirm('Are you sure you want to delete this supplier?')) return
     setDeletingId(id)
     deleteMutation.mutate(id, { onSettled: () => setDeletingId(null) })
@@ -102,6 +108,7 @@ export function SuppliersPage() {
           onDelete={handleDelete}
           isDeleting={deleteMutation.isPending}
           deletingId={deletingId}
+          onViewProducts={handleViewProducts}
         />
       )}
     </div>
