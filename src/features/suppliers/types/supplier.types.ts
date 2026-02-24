@@ -17,9 +17,7 @@ export interface CreateSupplierDto {
 
 export type UpdateSupplierDto = Partial<CreateSupplierDto>
 
-import type { Product } from '@/features/products/types/product.types'
-
-export interface SupplierProduct extends Product {
+export interface SupplierProduct {
   minimum_quantity: number
   optimal_quantity: number
   unit_price: number

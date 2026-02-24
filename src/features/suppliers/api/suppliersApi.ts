@@ -5,7 +5,6 @@ import type { Supplier, CreateSupplierDto, UpdateSupplierDto } from '../types/su
 export const suppliersApi = {
   getAll: async (): Promise<Supplier[]> => {
     const response = await apiClient.get<ApiResponse<Supplier[]>>('/suppliers')
-    console.log('API Response:', response.data) // Debug log
     return response.data
   },
 

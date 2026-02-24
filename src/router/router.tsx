@@ -5,6 +5,8 @@ import { LoginPage } from '@/features/auth/pages/LoginPage'
 import { SuppliersPage } from '@/features/suppliers/pages/SuppliersPage'
 import { SupplierProductsPage } from '@/features/suppliers/pages/SupplierProductsPage'
 import { ProductsPage } from '@/features/products/pages/ProductsPage'
+import { OrdersPage } from '@/features/orders/pages/OrdersPage'
+import { OrderDetailPage } from '@/features/orders/pages/OrderDetailPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 
 const router = createBrowserRouter([
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
           {
             path: '/products',
             element: <ProductsPage />,
+          },
+          {
+            path: '/orders',
+            element: <OrdersPage />,
+          },
+          {
+            path: '/orders/:orderId',
+            element: <OrderDetailPage />,
           },
         ],
       },

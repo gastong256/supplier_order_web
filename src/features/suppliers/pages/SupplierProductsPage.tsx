@@ -148,7 +148,7 @@ export function SupplierProductsPage() {
             </thead>
             <tbody className="divide-y divide-border">
               {linkedProducts.map((product) => (
-                <tr key={product.id} className="bg-card transition-colors hover:bg-muted/30">
+                <tr key={product.product.id} className="bg-card transition-colors hover:bg-muted/30">
                   <td className="px-4 py-3 font-medium text-foreground">{product.product.name}</td>
                   <td className="px-4 py-3 font-mono text-muted-foreground">{product.product.sku}</td>
                   <td className="px-4 py-3 text-muted-foreground">{product.product.unit}</td>
@@ -166,8 +166,8 @@ export function SupplierProductsPage() {
                     <Button
                       variant="destructive"
                       size="sm"
-                      isLoading={unlinkMutation.isPending && unlinkingId === product.id}
-                      onClick={() => handleUnlink(product.id)}
+                      isLoading={unlinkMutation.isPending && unlinkingId === product.product.id}
+                      onClick={() => handleUnlink(product.product.id)}
                     >
                       Remove
                     </Button>
